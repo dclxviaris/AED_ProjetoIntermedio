@@ -2,9 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include "declaracoes.h"
+/***********
+void alloc_tabuleiro (Lab *labs)
+{
+    labs->tabuleiro = (int**) calloc(L*C, sizeof(int) );
+    if (labs->tabuleiro == NULL)
+    {
+        fprintf(stdout, "Impossível alocar tabuleiro!");
+        exit(EXIT_FAILURE);
+    }
+}
 
-void alloc_tabuleiro(tab *tabuleiro) {
-    tabuleiro->tabuleiro = (int **) malloc(sizeof(int *) * tabuleiro->tab_l);
+***********/
+//^ aloca-se tudo de uma vez
+
+void alloc_tabuleiro(tab *tabuleiro) {                                                                          
+    tabuleiro->tabuleiro = (int **) malloc(sizeof(int *) * tabuleiro->tab_l);                               
     if (tabuleiro->tabuleiro == NULL) {
         exit(EXIT_FAILURE);
     } 
@@ -16,7 +29,7 @@ void alloc_tabuleiro(tab *tabuleiro) {
     }
 }
 
-void print_tabuleiro(tab *tabuleiro) {
+void print_tabuleiro(tab *tabuleiro) { //não é preciso imprimir o tabuleiro, basta alocar em mem
     for (int i = 0; i < tabuleiro->tab_l; i++) {
         for (int j = 0; j < tabuleiro->tab_c; j++) {
             printf("%d ", tabuleiro->tabuleiro[i][j]);

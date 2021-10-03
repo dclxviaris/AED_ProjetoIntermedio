@@ -1,9 +1,25 @@
+//fprintfs = só para debug
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "declaracoes.h"
 
-void main () {
+void main () { //int argc, char** argv
+    /***********
+ if (argc != 3)
+    {
+		fprintf (stdout, "Número de argumentos errado!"); //nome do programa, opção -s, nome do ficheiro
+		exit (EXIT_FAILURE);
+	} else continue;
+
+    if (**argv[1] != "s")
+    {
+        fprintf(stdout, "Flag '-s' necessária para esta fase do projeto!"); //verifica se a flag -s está presente
+        exit(EXIT_FAILURE);
+    } else continue;
+***********/
+
+    
 
     FILE *fp;
     int parede_1 = 0, parede_2 = 0, parede_v = 0;
@@ -12,12 +28,33 @@ void main () {
     int t_counter = 0;
     tab *tabuleiro;
 
-    fp = fopen("enunciado202.in1", "r");
+    fp = fopen("enunciado202.in1", "r"); 
+    /***********
+filename = (char*) malloc( strlen(*argv[2] + 1) ); //até à linha 39: verifica se de facto a extensão é .in1
+    strcpy(filename, *argv[1]);
+    extencao = strrchr(filename, dot);
+    if ((read_ok = strcmp(extencao, ".in1")) != 0 )
+    {
+        fprintf(stdout, "Extensão inválida!");
+        exit(EXIT_FAILURE);
+    }
+    else continue;
+    
+    
+***********/
+    
+    //fp = fopen (*argv[2], "r");
+    /*if (fp == NULL)
+    {
+    fprintf(stdout, "Impossível abrir o ficheiro!");
+    }*/
+    
+
 
     // Calcula a quantidade de informação da tabela + paredes
 
     for (int i = 0; i < 100; i++) {
-        fscanf(fp, " ");
+        fscanf(fp, " "); //? 
         fscanf(fp, "\n");
 
         if(feof(fp) != 0) break; 
